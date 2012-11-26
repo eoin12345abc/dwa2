@@ -5,7 +5,8 @@
 	<title>  Cellular Automata  </title>
 
 	<link rel="stylesheet" type="text/css" href="cellStyles.css">
-<script type="text/javascript" src="jquery-1.8.3.min.js">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js">
+	</script>		
 		</script>		
 
 
@@ -18,43 +19,57 @@
 			
 </head>
 <body>
+
 <div class="left-side">
+
 	<h2>Cellular Automata </h2> 	
+	
+		<div class="smaller">Purple is dead and green is alive. <br>
+		Click on a cell to kill or revive it. <br>
+		</div>
+	
 	<h1>Choose the rules</h1>
-	<br>
-	Click the number of neighboring cells required to reproduce/stay alive.   
+	
+		Click the number of neighboring cells required to reproduce/stay alive.  <br>
 
-	<form>
-	<input type="checkbox" id="one1">1 
-	<input type="checkbox" id="two">2 
-	<input type="checkbox" id="three">3 <br>
-	<input type="checkbox" id="four">4 
-	<input type="checkbox" id="five">5 
-	<input type="checkbox" id="six">6 <br>
-	<input type="checkbox" id="seven">7 
-	<input type="checkbox" id="eight">8 
-	<input type="checkbox" id="nine">9  <br>
-	<input type="checkbox" id="zero">0
 
-	Enter the dimensions
+	<form name="myForm">
+	
+		<input type="checkbox" id="one1">1 
+		<input type="checkbox" id="two">2 
+		<input type="checkbox" id="three">3 <br>
+		<input type="checkbox" id="four">4 
+		<input type="checkbox" id="five">5 
+		<input type="checkbox" id="six">6 <br>
+		<input type="checkbox" id="seven">7 
+		<input type="checkbox" id="eight">8 
+		<input type="checkbox" id="zero">0
+	
+		<h1>Enter the dimensions </h1>
+	
 			Width (px)
-			<input type="text" name="width" id="width">  
-			<div class="footer"> </div>
+				<input type="text" name="width" id="width">  
+				<div class="footer"> </div>
 			Height (px)
-			<input type="text" id="height">  
+				<input type="text" id="height">  
 			<div class="footer"> </div>
 			Width (boxes) 
 			<input type="text" id="numX"> 
 			<div class="footer"> </div>
 			Height (boxes) 
 			<input type="text" id="numY"> 
-</form>		
+	</form>		
 
-	<div id="storage">  </div>
-
-	<button id="startButton" >Start Animation</button>
-	<button id="initButton" >Start an Initial Frame</button>
-	<button id="updateButton" >Update Game 1 step</button>
+	<h3>Choose Initial State</h3>
+	<div class="smaller">
+	<input type="radio" name="state" id="random" value="2" > Random
+	<input type="radio" name="state" id="dead" value="0" > Dead 
+	<input type="radio" name="state" id="alive" value="1"> Alive <br>
+	</div>
+	<div class="redbkg">
+	<button id="startButton" >Fresh Board</button>
+	<button id="updateButton" >Update 1 Step</button>
+	</div>
 	</div>
 
 	<div id="wrapper">

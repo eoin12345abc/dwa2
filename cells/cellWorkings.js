@@ -2,6 +2,16 @@
 
 $(document).ready(function() { // start doc ready; do not delete this!
 
+//BASIC IDEA
+//divide grid up into y*x points.  Create y*x matrix;  Store present itteration alive/dead values in matrix.
+//alive =1, dead =0;  
+//thus we have an y*x matrix of 1s and 0s.  
+//output the present iteration
+//loop through the present array, testing each point for alive or dead, and updating thusly
+//output the new values
+
+
+var rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8, rule0;
 /*these are the reproductive rules.  they are boolean values
 since they are the reproductive rules, if the rule is set to true, and a certain condition is met
 the cell will reproduce and attain a value of 1.  else the cell dies and ==0;
@@ -10,55 +20,46 @@ example: if nearby neighbors of cell (a,b)=Q
 then check if ruleQ=true or false.  if true, then (a,b)=1; if false, than (a,b)=0.  Other rules != ruleQ have no bearing
 */
 
-//var iterations;
-//BASIC IDEA
-//divide grid up into x*y points.  Create x*y matrix;  Store present itteration alive/dead values in matrix.
-//alive =1, dead =0;  
-//thus we have an x*y matrix of 1s and 0s.  
-//output the present iteration
-//loop through the present array, testing each point for alive or dead, and updating thusly
-//output the new values
-//do it all over again in animation loop
 
-var rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8, rule0;
 
 function MyGrid (Grid,sizeX,sizeY,noX,noY) {
-this.Grid=Grid;
-this.sizeX=sizeX;
-this.sizeY=sizeY;
-this.noX=noX;
-this.noY=noY;
-this.initCells=initCells;
-this.updateCells=updateCells;
-this.countNeighbors=countNeighbors;
+//This is the basic object, the grid we are playing on
+	this.Grid=Grid;
+	this.sizeX=sizeX;
+	this.sizeY=sizeY;
+	this.noX=noX;
+	this.noY=noY;
+	this.initCells=initCells;
+	this.updateCells=updateCells;
+	this.countNeighbors=countNeighbors;
+	this.changeColors=changeColors;
 }
 
-function countNeighbors(w,z){
-/*  (0,0)   (0,maxX-1)
-    (maxY-1,0)   (maxY-1, maxX-1) 	
-*/
-	var count=0;
-	/*var minX=(z-1);
-	var maxX=(z+1);
-	var minY=(w-1);
-	var maxY=(w+1); 	
-	//the following if else statements are needed to take care of border situations 
-	if (w==0){minY=0;}  
 
-	if (w==(this.noY-1)){maxY=(this.noY-1);}
-*/
+
+function countNeighbors(w,z){
+//this function will count the number of alive neighbors of a gridpoint.  
+//the 2 arguments are the y,x coordinates of the grid point.
+//it returns the count;  The grid looks like a rectangle with coordinates:
+		/*  (0,0)   (0,maxX-1)
+		    (maxY-1,0)   (maxY-1, maxX-1) 	
+		*/
+	var count=0;
+	var minX, maxX, minY, maxY; 	
+	//the following if else statements are needed to take care of border situations 
+
 	if (w==0){minY=0;}
-	else     {minY=w-1;}   	
-	
+	else     {minY=w-1;}  
+
 	if (w==(this.noY-1)){
-		maxY=(this.noY-1);}
-	else	{maxY=(w+1);}
+		maxY=(w);}
+	else	{maxY=w+1;}
 
 	if (z==0){minX=0;}
-	else     {minX=z-1;}   	
+	else     {minX=z-1;}   
 	
 	if (z==(this.noX-1)){
-		maxX=(this.noX-1);}
+		maxX=z;}
 	else	{maxX=(z+1);}
 
 	for(var i=minX; i<maxX+1; i++){
@@ -72,63 +73,62 @@ function countNeighbors(w,z){
 }
 
 
-//initialize first cell state to random ???
-function initCells(how){
-	var first;
-	if (how==1) {first= function(){Math.round(Math.random());}}
-	if (how==0) {first= 0;}
+function initCells(){
+//initialize the cell board	
+	var first =function(){
+	//get the value from the radio to determine the initialization
+		if (document.getElementById("dead").checked) {return 0;}
+		if (document.getElementById("alive").checked) {return 1;}
+		if (document.getElementById("random").checked) {return Math.round(Math.random());}
+							//use Math fcn to populate entries with 1 or 0
+	} 	
 	
-	$("#wrapper").empty(); //clear body of formatting
-	//for loop in for loop creates array of arrays, thus an "noX" x "noY" matrix.  
-	//use Math fcn to populate entries with 1 or 0	
+	$("#wrapper").empty(); //clear wrapper of formatting
+	
+	//for loop in for loop creates array of arrays, thus an "noY" x "noX" matrix.  
 	//also Use CSS and Jquery to interpret matrix as visual grid of appropriate colors
-		for(var i=0; i< this.noY; i++) {
-			this.Grid[i] = new Array()	
-			for(var j=0; j<this.noX; j++){
-				this.Grid[i][j]=1;			
-				//this.Grid[i][j]=Math.round(Math.random());
-				if (this.Grid[i][j]== 0) {
-					//name=' "+i+"."+j+"'
-					$("#wrapper").append("<div class='cell zero' value='' > </div>");
-					//$("div").prev().data("ilocation",i)
-					//$("div").prev().data("jlocation",j)
-				}
-				else {
-					//name='"+i+"."+j+"''
-					$("#wrapper").append("<div class='cell one'  > </div>");
-				}
-			
+	for(var i=0; i< this.noY; i++) {
+		this.Grid[i] = new Array();	
+		for(var j=0; j<this.noX; j++){
+			this.Grid[i][j]=first();			
+			if (this.Grid[i][j]== 0) {
+				$("#wrapper").append("<div class='cell zero' id='"+i+"."+j+"'' > </div>");
+				//attach an unique id to each cell that is its coordinates in "y.x" form 
 			}
-			$("#wrapper").append("<div class='footer'> </div>");		
-		} 
-	var x=(this.sizeX/this.noX);
-	var y=(this.sizeY/this.noY);
-	//take parameters to adjust the size of the output boxes and margins.
+			else {
+				$("#wrapper").append("<div class='cell one'  id='"+i+"."+j+"'' > </div>");
+			}			
+		}
+		$("#wrapper").append("<div class='footer'> </div>");		
+	} 
+
+	var x=(this.sizeX-this.noX-1)/this.noX;
+	var y=(this.sizeY-this.noY-1)/this.noY;
+	//take parameters to adjust the size of the output boxes and margins.  take into account 1px per edge.
 	$(".cell").css("width", x);
 	$(".cell").css("height", y );	
-	//(Grid,sizeX,sizeY,noX,noY,marg)	
-	//$(".one").css("width", x);
-	//$(".one").css("height", y );
-	//$(".one").css("margin", this.marg);	
 }
 
-
-//this function will count the number of alive neighbors of a gridpoint.  
-//the 2 arguments are the x,y coordinates of the grid point.
-//it returns the count;
-
+var tempGrid= new Array();
+//will need this var in a minute
 
 function updateCells(){
-//ruleN.  Get ruleN from form.  
+//update the Cells
 	//set up a temporary Grid so that we can sequentially update all the values in the cell "at once"
 	//ie without having the calculation being affected by previously updated gridpoints.  
-	//clear the body of any css formatting
-	//Comment out so can see the process in action for testing. 
-	var tempGrid= this.Grid;
-	$("#wrapper").empty();	
+	//I dont know if there is a more efficient way to do this.
+	for(var i=0; i< this.noY; i++) {
+		tempGrid[i]=new Array();
+		for(var j=0; j<this.noX; j++){
+			tempGrid[i][j]=this.Grid[i][j];
+		}	
+	}
+	
+	$("#wrapper").empty();	//clear our wrapper of CSS/HTML
 	for(var i=0; i< this.noY; i++) {
 		for(var j=0; j<this.noX; j++){
-			switch (this.countNeighbors(i,j)){
+			var a= this.countNeighbors(i,j);  //count the number of living neighbors
+			switch (a){  //now decide what to do based upon that.
 				case 0: if(rule0) {tempGrid[i][j]=1;} else{tempGrid[i][j]=0;} ; break;
 				case 1: if(rule1) {tempGrid[i][j]=1;} else{tempGrid[i][j]=0;} ; break;
 				case 2: if(rule2) {tempGrid[i][j]=1;} else{tempGrid[i][j]=0;} ; break;
@@ -142,195 +142,147 @@ function updateCells(){
 		//reset the grid to have the tempGrid values
 		//CSS and JQUERY This ISH.  Transform matrix into CSS grid w/appropriate colors
 		//i figured itd be faster to put CSS in here instead of looping through again later to put it in
-			if (tempGrid[i][j]==1) {				
-				//value='"+i+"."+j+"''
-				$("#wrapper").append("<div class='cell one' >"+this.countNeighbors(i,j)+"</div>");		
+			if (tempGrid[i][j]==1) {							
+				$("#wrapper").append("<div class='cell one' value='"+i+"."+j+"'' ></div>");		
 			} 
 			else {	
-				//value='"+i+"."+j+"''
-				$("#wrapper").append("<div class='cell zero'  >"+this.countNeighbors(i,j)+"</div>");		
+				$("#wrapper").append("<div class='cell zero' value='"+i+"."+j+"'' ></div>");		
 			}
 		}	
-		this.Grid=tempGrid;
-		$("#wrapper").append("<div class='footer'> </div>");	
+		$("#wrapper").append("<div class='footer'> </div>");	//start the next row
 	} 	
-
-	var x=(this.sizeX/this.noX);
-	var y=(this.sizeY/this.noY);
-	//$(".zero").css("width", x);
-	//$(".zero").css("height", y );
+	//have to do another loop to reset the Grid values.
+	for(var i=0; i< this.noY; i++) {
+		for(var j=0; j<this.noX; j++){
+			this.Grid[i][j]=tempGrid[i][j];
+		}	
+	}
+	
+	var x=(this.sizeX-this.noX-1)/this.noX;
+	var y=(this.sizeY-this.noY-1)/this.noY;
 	$(".cell").css("width", x);
 	$(".cell").css("height", y );
-	//$(".zero").css("margin", this.marg);
 }
+
 
 function checkNums(){
-		if (document.getElementById("one1").checked){
-		rule1=true;		
-		}			
-		else {
-		rule1=false; }
+//this function is used to apply the rules you toggle in the html body		
+	if (document.getElementById("one1").checked){
+	rule1=true;		
+	}			
+	else {
+	rule1=false; }
 
-		if (document.getElementById("two").checked){
-		rule2=true;		
-		}	
-		
-		else {
-		rule2=false; }
-		
-		if (document.getElementById("three").checked){
-		rule3=true;		
-		}			
-		else {
-		rule3=false; }
+	if (document.getElementById("two").checked){
+	rule2=true;		
+	}	
 	
-		if (document.getElementById("four").checked){
-		rule4=true;		
-		}	
-		else {
-		rule4=false; }
-
-		if (document.getElementById("five").checked){
-		rule5=true;		
-		}			
-		else {
-		rule5=false; }
-
-		if (document.getElementById("six").checked){
-		rule6=true;		
-		}	
-		else {
-		rule6=false; }
-		
-		if (document.getElementById("seven").checked){
-		rule7=true;		
-		}			
-		else {
-		rule7=false; }
+	else {
+	rule2=false; }
 	
-		if (document.getElementById("eight").checked){
-		rule8=true;		
-		}	
-		else {
-		rule8=false; }
+	if (document.getElementById("three").checked){
+	rule3=true;		
+	}			
+	else {
+	rule3=false; }
 
-		if (document.getElementById("nine").checked){
-		rule9=true;		
-		}			
-		else {
-		rule9=false; }
+	if (document.getElementById("four").checked){
+	rule4=true;		
+	}	
+	else {
+	rule4=false; }
+
+	if (document.getElementById("five").checked){
+	rule5=true;		
+	}			
+	else {
+	rule5=false; }
+
+	if (document.getElementById("six").checked){
+	rule6=true;		
+	}	
+	else {
+	rule6=false; }
 	
-		if (document.getElementById("zero").checked){
-		rule0=true;		
-		}	
-		else {
-		rule0=false; }
+	if (document.getElementById("seven").checked){
+	rule7=true;		
+	}			
+	else {
+	rule7=false; }
+
+	if (document.getElementById("eight").checked){
+	rule8=true;		
+	}	
+	else {
+	rule8=false; }
+
+	if (document.getElementById("zero").checked){
+	rule0=true;		
+	}	
+	else {
+	rule0=false; }
 }
 
-//can put 3 functions in 1 function with if statement get id...  do later.
-function runStart(){
-	//create a new MyGrid object called grid
-	checkNums();	
+
+
+
+function changeColors(){  //function to change the colors of a tile
+	var coordinates;	
+	$(".cell").click(function(event) { //acts on click
+		//splice up that tag we assigned earlier as the id to get the x and y coordinates
+		coordinates=(event.target.id);
+		var middle=coordinates.indexOf(".");
+		var y = Number(coordinates.slice(0,middle+1));
+		var x = Number(coordinates.slice(middle+1,coordinates.length));
+		//on click your Grid value changes from 1-->0 or vice versa
+			window.grid.Grid[y][x]==(window.grid.Grid[y][x])%2; 
+		//when you click, you will also alternate the classes of one and zero aka living and dead		
+		if(     $(this).hasClass("one") ) {		
+			$(this).removeClass("one");
+			$(this).addClass("zero");
+			}
+		else{		
+			$(this).removeClass("zero");
+			$(this).addClass("one");
+		}
+	});
+}
+
+
+$("#startButton").click(function(){
+//when you click the start button, this happens:
+	checkNums();  //get the rules
+	              //get the inputs 		
 	var width  =$("#width").val();
 	var height =$("#height").val()
 	var numX   =$("#numX").val();
 	var numY   =$("#numY").val();
-
+		      //make a new grid with those inputs
 	grid =new MyGrid ([],width,height,numX,numY);
-	input=0;
-	grid.initCells(input);
-}
-
-function runInit(){
-
-window.grid = new MyGrid ([],width,height,numX,numY);
-
-
-}
-
-
-
-$("#startButton").click(function(){
-  runStart();	  
-	$(".cell").click(function(){
-	//alert($("#startButton").data("ilocation"));
-	// alert($("event.target").val());	
-	});
+		      //initiate it with initialization variable determining whether random/dead/alive		
+	grid.initCells();
+		      //allow colors to be changed 	
+	changeColors.call(grid);
 });
 
-$("#initButton").click(function(){
-  runInit();
- alert("rule 1 is "+rule1.toString()+".rule 2 is "+rule2.tostring()+".rule 3 is "+rule3.tostring()+
-      "rule 4 is "+rule4.toString()+".rule 4 is "+rule4.tostring()+".rule 5 is "+rule5.tostring()+
-      "rule 6 is "+rule6.toString()+".rule 7 is "+rule7.tostring()+".rule 8 is "+rule8.tostring()+
-      "rule 0 is "+rule0.toString());
-  });
 
 $("#updateButton").click(function(){
-  checkNums();
-  window.grid.updateCells();
-  });
-
-
-
-
-//store the grid object in the body, with id== storage
-		//$('body').data('storage', grid);
-
-		//clear the wrapper so we have a clean page
-		//$("body").detach();
-		
-		//call back the grid in case we deleted it (not sure)
-		//grid=$('body').data('storage');
-
-		//update the grid
-		//grid.updateCells();
-
-	//MyGrid (Grid,sizeX,sizeY,noX,noY,marg)
-	//initialize grid
-
-
-//$("body").append("<div class='wrapper'>");	
-
-
-	/*requestAnimationFrame(animate,1200);
-	function animate() {
-		//grid.initCells();
+//when you click the update button, this happens:
+//get the rules.  update the cells.  allow colors to be changed
+	checkNums();
+	window.grid.updateCells();
+  	changeColors.call(grid);
+});
+/*
+function animate() {
+//In the future, may want to add animation functionality		
 		grid.updateCells();			
 		requestAnimationFrame(animate,1200);
-	}*/	
-
-//	animate();
-	/*
-	function animate() {
-	    setTimeout(function() {
-		grid.updateCells();		
-		requestAnimationFrame(draw);
-		// Drawing code goes here
-	    }, 1200);
-	}*/
-	/*
-	
-function setValue()
-{
-    window.myValue = "test";
 }
-
-function getValue()
-{
-    alert(window.myValue); // "test" (assuming setValue has run)
-}
-	*/
-/*if (rule1==false) { $("#numbers").append("1 false"); }
-	else {$("#numbers").append("1 true");}
-
-
-		$("#numbers").append(width);*/  //check if rules are implemented.
-	//width= document.getElementById("width").value;
-	
+*/
 
 //###################################	
-
+//further animation code...
 
 
 // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
