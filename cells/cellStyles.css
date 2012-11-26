@@ -1,0 +1,62 @@
+
+
+.right-side{
+float:left;
+border:1px solid black;
+}
+
+h1{
+text-align:center;
+font-size:17px;
+margin-top:5px;
+	margin-bottom:5px
+}
+
+h2{
+text-align:center;
+font-size:22;
+background-color:aquamarine;
+margin-top:0px;
+	margin-bottom:5px
+}
+
+.centered{
+text-align:center; }
+
+.cell{
+width:;
+height:;
+float:left;
+cursor:pointer;
+}
+
+.cell.one{
+background-color:green;
+
+border:solid black 1px;
+}
+
+.cell.zero{
+background-color:purple;
+
+border:solid black 1px;}
+
+
+.footer{
+clear:both;
+
+}
+
+.left-side{
+float:left;
+width:200px;
+text-wrap:on;
+text:wrap;
+border:1px solid yellow;
+
+}
+
+#wrapper{
+float:left;
+}
+
