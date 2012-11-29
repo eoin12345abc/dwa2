@@ -5,18 +5,11 @@
 	<title>  Cellular Automata  </title>
 
 	<link rel="stylesheet" type="text/css" href="cellStyles.css">
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js">
-	</script>		
-		</script>		
-
-
-<script type="text/javascript" src="cellWorkings.js"> 
-</script>
-
-
-
 	
-			
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>		
+
+	<script type="text/javascript" src="cellWorkings.js"> </script>
+		
 </head>
 <body>
 
@@ -24,14 +17,13 @@
 
 	<h2>Cellular Automata </h2> 	
 	
-		<div class="smaller">Purple is dead and green is alive. <br>
+	<div class="smaller">Purple is dead and green is alive. <br>
 		Click on a cell to kill or revive it. <br>
-		</div>
+	</div>
 	
 	<h1>Choose the rules</h1>
 	
-		Click the number of neighboring cells required to reproduce/stay alive.  <br>
-
+	Click the number of neighboring cells required to reproduce/stay alive.  <br>
 
 	<form name="myForm">
 	
@@ -46,35 +38,35 @@
 		<input type="checkbox" id="zero">0
 	
 		<h1>Enter the dimensions </h1>
-	
-			Width (px)
-				<input type="text" name="width" id="width">  
-				<div class="footer"> </div>
-			Height (px)
-				<input type="text" id="height">  
-			<div class="footer"> </div>
-			Width (boxes) 
-			<input type="text" id="numX"> 
-			<div class="footer"> </div>
-			Height (boxes) 
-			<input type="text" id="numY"> 
+
+		Width (px)<br>
+		<input type="text" name="width" id="width">  
+		
+		Height (px)<br>
+		<input type="text" id="height">  
+		
+		Width (boxes) <br>
+		<input type="text" id="numX"> 
+		
+		Height (boxes) <br>
+		<input type="text" id="numY">
+		
 	</form>		
 
 	<h3>Choose Initial State</h3>
 	<div class="smaller">
-	<input type="radio" name="state" id="random" value="2" > Random
-	<input type="radio" name="state" id="dead" value="0" > Dead 
-	<input type="radio" name="state" id="alive" value="1"> Alive <br>
+		<input type="radio" name="state" id="random" value="2" > Random
+		<input type="radio" name="state" id="dead" value="0" > Dead 
+		<input type="radio" name="state" id="alive" value="1"> Alive <br>
 	</div>
 	<div class="redbkg">
-	<button id="startButton" >Fresh Board</button>
-	<button id="updateButton" >Update 1 Step</button>
+		<button id="startButton" >Fresh Board</button>
+		<button id="updateButton" >Update 1 Step</button>
 	</div>
-	</div>
-
-	<div id="wrapper">
-
-</div> 
+	
+	<div id='wrapper'></div>
+	
+</div>
 
 </body>
 
