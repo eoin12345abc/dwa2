@@ -1,10 +1,15 @@
+﻿
 <table id="resultsTable" summary="Definitions">
 	<thead>
 		<tr>
-			<?php 
-					echo "$text  <div id='closeBox'>close(X)</div>";  
-			?>
-			
+			<div class="heavy"> 
+				<?php 
+					echo "$text"		
+				?>
+			</div>
+			<div id='closeBox'>close(X)</div>
+			<div class='footer'></div>
+				
 		</tr>
 		<tr>
 			<th scope="col">Kanji</th>

@@ -36,6 +36,12 @@ overflow:auto;
 
 #closeBox{
 cursor:pointer;
+float:left;
+}
+
+.heavy{
+font-weight:bold;
+font-size:large;
 }
 
 .footer{

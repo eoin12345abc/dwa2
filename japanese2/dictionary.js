@@ -16,14 +16,6 @@ $(document).ready(function() { // start doc ready; do not delete this!function g
 			return txt;
 	}
 	
-	var getBox = function(){
-		
-	}
-	
-	var hideBox = function(){
-		$("dictBox").hide();
-	}
-	
 	var mouseTimer;
 	var mouseClock;
 	
@@ -42,59 +34,34 @@ $(document).ready(function() { // start doc ready; do not delete this!function g
 		function(){
 			clearInterval(mouseTimer);
 			if(mouseClock>25){
-				var translateUrl= '/dictionary/lookup/english/'+getSelText();
-				
+					var translateUrl= '/dictionary/lookup/'+getSelText();
 					$.ajaxSetup ({  
 						cache: false  
 					});  
 				
 					var ajax_load = translateUrl;  
 					$("#results").load(translateUrl);   
-				//Tip('Some text', CLICKCLOSE, true, FOLLOWMOUSE, false)
+					//$( "#results" ).draggable();
+				
+				
 			};
-			}
-		);
-	$(".closeBox").click(
-		function(){
-			$("#results").remove();
 		}
 	);
 	
-	/*	$("iframeID").mousedown(
-		function() {
-			mouseClock=0;
-			mouseTimer=setInterval(function() {mouseClock++;},1);
+	$("body").dblclick(
+		function(){
+			$("#results").empty();
 		}
 	);
-	$("#iframeID").mouseup(
+		
+	$("#closeBox").click(
 		function(){
-			clearInterval(mouseTimer);
-			if(mouseClock>25){
-				alert(getSelText());
-				
-				//Tip('Some text', CLICKCLOSE, true, FOLLOWMOUSE, false)
-				};
-			}
-		);
-	*/	
-	/*$("body").tooltip({
-		track: true, 
-		delay: 0, 
-		showURL: false, 
-		opacity: 1, 
-		fixPNG: true, 
-		//extraClass: "pretty fancy", 
-		top: -15, 
-		left: 5, 
-		bodyHandler: function() {
-			return "heyo";
-		},
-	});*/
-
+			$("#results").empty();
 		
-
-//$('#set1 *').tooltip();
-		
+		}
+	);
+	
+	
 
 
 }); // end doc ready; do not delete this!

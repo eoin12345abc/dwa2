@@ -8,6 +8,7 @@
 	<!-- JS -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 	<script src="/dictionary.js"> </script>
 				
 	<!-- Controller Specific JS/CSS -->
