@@ -1,1 +1,0 @@
-i commented out  line 15 in debug.php cuz it was causing problems
