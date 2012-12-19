@@ -88,6 +88,9 @@ class dictionary_controller extends base_controller {
 							$padding2=" %";
 					}	
 			
+			#sanitize input for sql
+			$text = DB::instance(DB_NAME)->sanitize($text);
+			
 			#make a nice, customized sql query
 			$q="select `kanji`,`kana`,`english` from `edict` where `{$language}` like '{$padding1}{$text}{$padding2}'";
 			
