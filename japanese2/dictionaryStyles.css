@@ -1,3 +1,13 @@
+.boxWrapper{
+color:white;
+border:2px solid black
+}
+
+#closeBox{
+cursor:pointer;
+float:left;
+}
+
 .column1{
 float:left;
 background-color:red;
@@ -19,11 +29,14 @@ padding:2px
 width:200px;
 }
 
-.boxWrapper{
-color:white;
-border:2px solid black
+.footer{
+clear:both;
 }
 
+.heavy{
+font-weight:bold;
+font-size:large;
+}
 
 #results{
 float:right;
@@ -32,20 +45,8 @@ top:5 px;
 right: 5px;
 height:200px;
 overflow:auto;
-}
-
-#closeBox{
-cursor:pointer;
-float:left;
-}
-
-.heavy{
-font-weight:bold;
-font-size:large;
-}
-
-.footer{
-clear:both;
+opacity:0.86;
+background-color:white;
 }
 
 td
@@ -53,7 +54,7 @@ td
 border: 1px solid white;
 border-collapse:collapse;
 background-color:#CCEBFF;
-font-size:80%
+font-size:90%
 }
 
 th

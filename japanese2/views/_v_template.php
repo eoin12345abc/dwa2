@@ -10,7 +10,6 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 	<script src="/dictionary.js"> </script>
-				
 	<!-- Controller Specific JS/CSS -->
 	<?php echo @$client_files; ?>
 	
@@ -19,15 +18,13 @@
 </head>
 
 <body>	
-	<div id='results'> </div>
+	<div id='results'> 
+	</div>
 	<div class='footer'></div>
- 	<div id='wrapper'></div>
  
     <?=$content;?> 
 	
 	
-	
-
 </body>
 </html>
 

@@ -1,4 +1,3 @@
-﻿
 <table id="resultsTable" summary="Definitions">
 	<thead>
 		<tr>
@@ -7,7 +6,7 @@
 					echo "$text"		
 				?>
 			</div>
-			<div id='closeBox'>close(X)</div>
+			<div id='closeBox'>close(閉)</div>
 			<div class='footer'></div>
 				
 		</tr>
