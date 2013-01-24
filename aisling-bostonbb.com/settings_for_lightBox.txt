@@ -1,0 +1,6 @@
+<script src="/js/lightbox.js"> </script>
+	<link rel="stylesheet" href="/css/lightbox.css" type="text/css" media="screen" />
+	
+	
+	<script src="/slimBox/js/slimbox2.js"> </script>
+	<link rel="stylesheet" href="/slimBox/css/slimbox2.css" type="text/css" media="screen" />
