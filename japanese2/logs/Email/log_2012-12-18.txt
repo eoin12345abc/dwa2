@@ -1,0 +1,28 @@
+2012-12-18 20:25:21 - INFO --> Controller/Method: dictionary/lookup 
+2012-12-18 20:25:21 - INFO --> From: My App (webmaster@myapp.com) 
+2012-12-18 20:25:21 - INFO --> To: My App (webmaster@myapp.com),  
+2012-12-18 20:25:21 - INFO --> CC:  
+2012-12-18 20:25:21 - INFO --> BCC:  
+2012-12-18 20:25:21 - INFO --> Subject: My App SQL Error 
+2012-12-18 20:25:21 - INFO --> Body: <h2>SQL Error</h2> select `kanji`,`kana`,`english` 
+2012-12-18 20:25:26 - INFO --> Controller/Method: dictionary/lookup 
+2012-12-18 20:25:26 - INFO --> From: My App (webmaster@myapp.com) 
+2012-12-18 20:25:26 - INFO --> To: My App (webmaster@myapp.com),  
+2012-12-18 20:25:26 - INFO --> CC:  
+2012-12-18 20:25:26 - INFO --> BCC:  
+2012-12-18 20:25:26 - INFO --> Subject: My App SQL Error 
+2012-12-18 20:25:26 - INFO --> Body: <h2>SQL Error</h2> select `kanji`,`kana`,`english` 
+2012-12-18 20:25:31 - INFO --> Controller/Method: dictionary/lookup 
+2012-12-18 20:25:31 - INFO --> From: My App (webmaster@myapp.com) 
+2012-12-18 20:25:31 - INFO --> To: My App (webmaster@myapp.com),  
+2012-12-18 20:25:31 - INFO --> CC:  
+2012-12-18 20:25:31 - INFO --> BCC:  
+2012-12-18 20:25:31 - INFO --> Subject: My App SQL Error 
+2012-12-18 20:25:31 - INFO --> Body: <h2>SQL Error</h2> select `kanji`,`kana`,`english` 
+2012-12-18 20:28:42 - INFO --> Controller/Method: dictionary/lookup 
+2012-12-18 20:28:42 - INFO --> From: My App (webmaster@myapp.com) 
+2012-12-18 20:28:42 - INFO --> To: My App (webmaster@myapp.com),  
+2012-12-18 20:28:42 - INFO --> CC:  
+2012-12-18 20:28:42 - INFO --> BCC:  
+2012-12-18 20:28:42 - INFO --> Subject: My App SQL Error 
+2012-12-18 20:28:42 - INFO --> Body: <h2>SQL Error</h2> select `kanji`,`kana`,`english` 

@@ -1,33 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title><?=@$title; ?></title>
-
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
-	
-	<!-- JS -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-	<script src="/dictionary.js"> </script>
-	<!-- Controller Specific JS/CSS -->
-	<?php echo @$client_files; ?>
-	
-<link rel="stylesheet" type="text/css" href="dictionaryStyles.css">
-	
-</head>
-
-<body>	
-	<div id='results'> 
-	</div>
-	<div class='footer'></div>
- 
-    <?=$content;?> 
-	
-	
-</body>
-</html>
-
-
- 
-   
+<!DOCTYPE html>
+<html>
+<head>
+	<title><?=@$title; ?></title>
+<!-- JS -->
+	<script src="/jquery-1.9.1.min.js"></script>
+	<script src="/dictionary.js"> </script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+	<META HTTP-EQUIV="Expires" CONTENT="-1">
+	
+	
+	<!-- Controller Specific JS/CSS -->
+	<?php echo @$client_files; ?>
+	
+<link rel="stylesheet" type="text/css" href="dictionaryStyles.css">
+	
+</head>
+
+<body>	
+	<div id='results'> 
+	</div>
+	<div class='footer'></div>
+ 
+    <?=$content;?> 
+	
+	
+	
+</body>
+<HEAD>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+</HEAD>
+</html>
+
+
+ 
+   
